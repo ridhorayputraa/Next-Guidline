@@ -3,6 +3,13 @@ import RootLayout from "./layout";
 import Link from "next/link";
 import { cache } from "react";
 
+const getTimeStatic = async () => {
+  const ress = await fetch(
+    "https://timeapi.io/api/Time/current/zone?timeZone=Asia/Jakarta"
+  );
+  return ress.json;
+};
+
 const getTime = async () => {
   const res = await fetch(
     // 3. -> ini adlaah bentuk nya Incrementa; data karna datanya berubah (sesuai detik)
