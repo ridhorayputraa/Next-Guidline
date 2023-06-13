@@ -1,12 +1,21 @@
 import Image from "next/image";
 import RootLayout from "./layout";
 import Link from "next/link";
+import { cache } from "react";
 
 const getTime = async () => {
   const res = await fetch(
-    // 1. -> ini adlaah bentuk nya Static data karna ada cache 
-    "https://timeapi.io/api/Time/current/zone?timeZone=Asia/Jakarta"
+    // 3. -> ini adlaah bentuk nya Incrementa; data karna datanya berubah (sesuai detik)
+    // ISR -> imceremental site rendering
+    "https://timeapi.io/api/Time/current/zone?timeZone=Asia/Jakarta",
+    {
+      // adding Object parameter
+      // ini adalah contoh isr dengan ISR selama 3 detik
+      // datanta akan ke tahan atau cache selama 3 detik
+      next: { revalidate: 3 },
+    }
   );
+
   // console.log(res)
   return res.json();
 };
@@ -14,7 +23,7 @@ const getTime = async () => {
 // karean ingin meamnggil await maka di top function nya harus
 // di kasih async
 export default async function Home() {
-  const {dateTime} = await getTime();
+  const { dateTime } = await getTime();
   // console.log(time);
 
   return (
