@@ -2,5 +2,8 @@
 import { NextResponse, NextRequest } from "next/server";
 
 export const GET = (req: NextRequest) => {
-    return NextResponse.json({ message: "Hello world" });
+  //   dummy
+  const dateTime = new Date();
+
+  return NextResponse.json({ dateTime });
 };
