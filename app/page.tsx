@@ -15,7 +15,7 @@ const getTimeRevalidate = async () => {
   const res = await fetch(
     // 3. -> ini adlaah bentuk nya Incrementa; data karna datanya berubah (sesuai detik)
     // ISR -> imceremental site rendering
-    "https://timeapi.io/api/Time/current/zone?timeZone=Asia/Jakarta",
+    "http://localhost:3000/api",
     {
       // adding Object parameter
       // ini adalah contoh isr dengan ISR selama 3 detik
