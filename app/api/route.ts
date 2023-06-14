@@ -7,3 +7,12 @@ export const GET = (req: NextRequest) => {
 
   return NextResponse.json({ dateTime });
 };
+
+
+
+export const POST = (req: NextResponse) => {
+  //   dummy
+  const dateTime = new Date();
+
+  return NextResponse.json({ dateTime });
+};
